@@ -1,4 +1,3 @@
-
 def common_intervals(list_one: list[list], list_two:list[list]) -> list[list]:
     """Returns the intervals in which both buttons were unpressed.
     This function assumes that both input lists are sorted, and the 
@@ -12,9 +11,9 @@ def common_intervals(list_one: list[list], list_two:list[list]) -> list[list]:
         if unpr_one[one_pt][1] < unpr_two[two_pt][0]:
             continue
 
-        end_interval = None
+        end_interval = unpr_one[one_pt][1]
         while two_pt < len(unpr_two) and unpr_two[two_pt][0] <= unpr_one[one_pt][1]:
-            end_interval = min(unpr_one[one_pt][1], unpr_two[two_pt][1])
+            end_interval = min(end_interval, unpr_two[two_pt][1])
             two_pt += 1
         
         if end_interval is not None:
