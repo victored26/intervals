@@ -6,6 +6,9 @@ def common_unpressed(one: list[list], two:list[list]) -> list[list]:
     one_pt, two_pt = 0, 0
     ints = []
     while one_pt < len(one) and two_pt < len(two):
+        # This is to make sure that in case of both 
+        # values being equal, you traverse the one
+        # with the smallest interval end
         equal_case = one[one_pt][0] == two[two_pt][0]
         equal_case = equal_case and one[one_pt][1] <= two[two_pt][1]
 
