@@ -16,8 +16,7 @@ def common_intervals(list_one: list[list], list_two:list[list]) -> list[list]:
             end_interval = min(end_interval, unpr_two[two_pt][1])
             two_pt += 1
         
-        if end_interval is not None:
-            res.append([unpr_one[one_pt][0], end_interval])
+        res.append([unpr_one[one_pt][0], end_interval])
     return res
 
 
