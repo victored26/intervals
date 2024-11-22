@@ -6,6 +6,9 @@ def common_unpressed(one: list[list], two:list[list]) -> list[list]:
     one_pt, two_pt = 0, 0
     ints = []
     while one_pt < len(one) and two_pt < len(two):
+        # This is to make sure that in case of both 
+        # values being equal, you traverse the one
+        # with the smallest interval end
         equal_case = one[one_pt][0] == two[two_pt][0]
         equal_case = equal_case and one[one_pt][1] <= two[two_pt][1]
 
@@ -36,7 +39,12 @@ def common_unpressed(one: list[list], two:list[list]) -> list[list]:
     return ints
 
 # My test cases
-"""assert(common_unpressed([[0,4], [8,10]], [[2,6]]) == [[6,8]])
+"""assert(common_unpressed([], []) == [])
+assert(common_unpressed([[1,2]], []) == [[0,1]])
+assert(common_unpressed([[1,2], [6,7]], []) == [[0,1], [2,6]])
+assert(common_unpressed([], [[1,2], [6,7]]) == [[0,1], [2,6]])
+assert(common_unpressed([], [[0,2]]) == [])
+assert(common_unpressed([[0,4], [8,10]], [[2,6]]) == [[6,8]])
 assert(common_unpressed([[2,6]], [[0,4], [8,10]]) == [[6,8]])
 assert(common_unpressed([[0,4]], [[2,3]]) == [])
 assert(common_unpressed([[2,3]], [[0,4]]) == [])
